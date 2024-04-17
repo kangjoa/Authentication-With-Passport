@@ -12,12 +12,14 @@ router.get('/', (req, res) => {
 
 // route to display login form
 router.get('/login', (req, res) => {
-  res.render('login');
+  const error = req.query.error ? 'Invalid username or password.' : null;
+  res.render('login', { error: error });
 });
+
 // Route to submit login form. It uses passport.authenticate
 router.post(
   '/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { failureRedirect: '/login?error=true' }),
   (req, res) => {
     res.redirect('/');
   },

@@ -1,6 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
+            {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{/if}}
             <form action="/login" method="post">
                 <legend>Login</legend>
                 <div class="form-group">
